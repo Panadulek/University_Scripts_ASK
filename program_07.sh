@@ -1,15 +1,15 @@
 #!/bin/bash
-number=-1
-rand=$(($RANDOM/327))
-while [[ $number != $rand ]]
-do
-	read number
-	if [[ $number -gt $rand ]];
-	then
-		echo "podaj mniejsza liczbe"
-	elif [[ $number -lt $rand ]];
-	then
-		echo "podaj wieksza liczbe"
-	fi
-done
-echo "Wygrales"
+
+if [[ $# != 2 ]];
+then
+	exit 1
+else
+	i=0
+	ret=1
+	while [[ $i -lt $2 ]] 
+	do
+		i=$((i+1))
+		ret=$(($ret*$1))
+	done
+	echo "Wynik $1^$2: $ret"
+fi
